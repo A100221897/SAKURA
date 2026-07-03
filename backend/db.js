@@ -7,13 +7,14 @@ export const db = new Database(join(__dirname, 'data.db'))
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS reservations (
-    id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    name       TEXT NOT NULL,
-    email      TEXT NOT NULL,
-    date       TEXT NOT NULL,
-    time       TEXT NOT NULL,
-    party_size INTEGER NOT NULL,
-    created_at TEXT DEFAULT (datetime('now'))
+    id                 INTEGER PRIMARY KEY AUTOINCREMENT,
+    reservation_number INTEGER UNIQUE,
+    name               TEXT NOT NULL,
+    email              TEXT NOT NULL,
+    date               TEXT NOT NULL,
+    time               TEXT NOT NULL,
+    party_size         INTEGER NOT NULL,
+    created_at         TEXT DEFAULT (datetime('now'))
   );
 
   CREATE TABLE IF NOT EXISTS menu_items (
@@ -24,3 +25,9 @@ db.exec(`
     price       REAL NOT NULL
   );
 `)
+
+// SQLite no permite ADD COLUMN UNIQUE; unicidad garantizada en app
+const cols = db.prepare('PRAGMA table_info(reservations)').all()
+if (!cols.find(c => c.name === 'reservation_number')) {
+  db.exec('ALTER TABLE reservations ADD COLUMN reservation_number INTEGER')
+}

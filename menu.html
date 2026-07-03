@@ -12,14 +12,21 @@
         <h1>Sakura Coffee House</h1>
         <nav>
             <a href="index.html" class="logo">
-                <img src="img/logoCirculoRojo.png" alt="Sakura Coffee House">
+                <img src="img/logoCirculoRojo.png" alt="Sakura Coffee House" class="logo-light">
+                <img src="img/logo_osc_sakura2.jpeg" alt="Sakura Coffee House" class="logo-dark">
             </a>
 
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="menu.html">Menú</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="index.html#reservar-btn">Reservar</a></li>
+                <li><a href="reservar.html">Reservar</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+                        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </button>
+                </li>
             </ul>
         </nav>
       </nav>
@@ -32,14 +39,12 @@
       <div class="categoria">
         <h3>BLACK</h3>
 
-        <div class="producto">
-            <div>
-                <h4>Filtrados (Pour Over)</h4>
-                <p>
-                    El café preparado con el método filtrado produce una taza limpia,
-                    de cuerpo ligero y con una complejidad de sabores extraordinaria.
-                </p>
-            </div>
+        <div class="categoria-intro">
+            <h4>Filtrados (Pour Over)</h4>
+            <p>
+                El café preparado con el método filtrado produce una taza limpia,
+                de cuerpo ligero y con una complejidad de sabores extraordinaria.
+            </p>
         </div>
 
         <div class="producto">
@@ -196,5 +201,6 @@
     <footer>
       <p>© 2026 Sakura Coffee House | Sabores que florecen.</p>
     </footer>
+    <script src="theme.js"></script>
   </body>
 </html>

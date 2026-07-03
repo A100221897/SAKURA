@@ -1,0 +1,15 @@
+# Backend
+backend/node_modules/
+backend/data.db
+
+# IA / Claude
+CLAUDE.md
+.claude/
+
+# Recursos internos
+MERCADOTECNIA.pdf
+menu-sakura.jpeg
+
+# OS
+.DS_Store
+Thumbs.db

@@ -4,9 +4,18 @@
   box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'Winky Milky';
+    src: url('fonts/WinkyMilky.ttf') format('truetype');
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #fff8f3;
+  font-family: 'Winky Milky', sans-serif;
+  background-color: #F2EEE8;
   color: #3b2f2f;
 }
 
@@ -16,7 +25,7 @@ body {
 }
 
 .logo img{
-    height: 150px; 
+    height: 50px; 
     width: auto;
 }
 
@@ -31,7 +40,7 @@ nav {
 }
 
 nav h1 {
-  color: #6b2f3a;
+  color: #4E0A0B;
 }
 
 nav ul {
@@ -42,24 +51,33 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #3b2f2f;
+  color: #4E0A0B;
   font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: white;
+  background-color: #6b2f3a;
 }
 
 .hero {
   min-height: 80vh;
-  background: linear-gradient(rgba(255,248,243,0.8), rgba(255,248,243,0.8)),
-              url("img/hero.jpg");
+  background: linear-gradient(rgba(255,248,243,0.8), rgba(255,248,243,0.8));
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   padding: 0 8%;
+  
 }
 
 .hero h2 {
   font-size: 55px;
   color: #6b2f3a;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -67,6 +85,14 @@ nav a {
   font-size: 20px;
   max-width: 600px;
   margin-bottom: 30px;
+}
+
+.hero-img{
+
+    display: block;
+    width: 450px;
+    height: auto;
+    
 }
 
 .btn {
@@ -77,6 +103,11 @@ nav a {
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
+}
+
+.btn-inicio{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .section {

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar | Sakura Coffee House</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .form-card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      text-align: left;
+    }
+
+    .form-card h3 {
+      color: #6b2f3a;
+      font-size: 22px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .campo {
+      margin-bottom: 20px;
+    }
+
+    .campo label {
+      display: block;
+      color: #6b2f3a;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #f8c8dc;
+      border-radius: 12px;
+      font-family: 'Winky Milky', sans-serif;
+      font-size: 16px;
+      color: #3b2f2f;
+      background-color: #fdf6f8;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .campo input:focus {
+      border-color: #6b2f3a;
+    }
+
+    .campo-fila {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-form {
+      width: 100%;
+      padding: 14px;
+      font-family: 'Winky Milky', sans-serif;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      margin-top: 8px;
+    }
+
+    .confirmacion {
+      display: none;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .confirmacion h3 {
+      color: #6b2f3a;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .numero-grande {
+      font-size: 72px;
+      font-weight: bold;
+      color: #6b2f3a;
+      line-height: 1;
+      margin: 16px 0;
+    }
+
+    .confirmacion p {
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .consulta-resultado {
+      display: none;
+      background-color: #fdf1f5;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .consulta-resultado p {
+      color: #3b2f2f;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .consulta-resultado p strong {
+      color: #6b2f3a;
+    }
+
+    .error-msg {
+      color: #c0392b;
+      font-size: 14px;
+      margin-top: 6px;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .campo-fila {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <nav>
+      <h1>Sakura Coffee House</h1>
+      <nav>
+        <a href="index.html" class="logo">
+          <img src="img/logoCirculoRojo.png" alt="Sakura Coffee House" class="logo-light">
+          <img src="img/logo_osc_sakura2.jpeg" alt="Sakura Coffee House" class="logo-dark">
+        </a>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="menu.html">Menú</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="reservar.html">Reservar</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+              <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Reserva tu mesa</h2>
+    <p class="subtitulo">Te esperamos con una experiencia única.</p>
+
+    <!-- Formulario de reservación -->
+    <div class="form-card" id="forma-reservar">
+      <h3>Nueva reservación</h3>
+
+      <form id="form-reservacion">
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+
+        <div class="campo">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="fecha">Fecha de visita</label>
+            <input type="date" id="fecha" name="fecha" required>
+          </div>
+          <div class="campo">
+            <label for="hora">Hora de visita</label>
+            <input type="time" id="hora" name="hora" min="08:00" max="21:00" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="personas">Número de personas</label>
+          <input type="number" id="personas" name="personas" min="1" max="20" placeholder="¿Cuántos son?" required>
+        </div>
+
+        <p class="error-msg" id="error-msg"></p>
+
+        <button type="submit" class="btn btn-form">Confirmar reservación</button>
+      </form>
+    </div>
+
+    <!-- Pantalla de confirmación -->
+    <div class="form-card confirmacion" id="pantalla-confirmacion">
+      <h3>¡Reservación confirmada!</h3>
+      <p>Tu número de reservación es:</p>
+      <div class="numero-grande" id="numero-confirmado">—</div>
+      <p>Guárdalo para consultar o modificar tu reservación.</p>
+      <br>
+      <a href="reservar.html" class="btn btn-form" style="text-align:center; display:block; text-decoration:none;">
+        Hacer otra reservación
+      </a>
+    </div>
+
+    <!-- Consultar reservación existente -->
+    <div class="form-card">
+      <h3>Consultar reservación</h3>
+
+      <form id="form-consulta">
+        <div class="campo">
+          <label for="numero-consulta">Número de reservación</label>
+          <input type="number" id="numero-consulta" name="numero-consulta"
+                 placeholder="Ej: 347" min="1" max="1000" required>
+        </div>
+        <button type="submit" class="btn btn-form">Buscar</button>
+      </form>
+
+      <div class="consulta-resultado" id="consulta-resultado"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Sakura Coffee House | Sabores que florecen.</p>
+  </footer>
+
+  <script>
+    const API = 'http://localhost:3000/api'
+
+    // Fecha mínima = hoy
+    document.getElementById('fecha').min = new Date().toISOString().split('T')[0]
+
+    // Formulario de reservación
+    document.getElementById('form-reservacion').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const errorEl = document.getElementById('error-msg')
+      errorEl.style.display = 'none'
+
+      const body = {
+        name:       document.getElementById('nombre').value.trim(),
+        email:      document.getElementById('email').value.trim(),
+        date:       document.getElementById('fecha').value,
+        time:       document.getElementById('hora').value,
+        party_size: parseInt(document.getElementById('personas').value)
+      }
+
+      try {
+        const res = await fetch(`${API}/reservations`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+        const json = await res.json()
+
+        if (json.ok) {
+          document.getElementById('numero-confirmado').textContent = json.reservation_number
+          document.getElementById('forma-reservar').style.display = 'none'
+          document.getElementById('pantalla-confirmacion').style.display = 'block'
+        } else {
+          errorEl.textContent = json.error
+          errorEl.style.display = 'block'
+        }
+      } catch {
+        errorEl.textContent = 'Error de conexión con el servidor.'
+        errorEl.style.display = 'block'
+      }
+    })
+
+    // Consultar reservación
+    document.getElementById('form-consulta').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const numero = document.getElementById('numero-consulta').value
+      const resultEl = document.getElementById('consulta-resultado')
+
+      try {
+        const res = await fetch(`${API}/reservations/${numero}`)
+        const json = await res.json()
+
+        if (json.ok) {
+          const r = json.reservation
+          resultEl.innerHTML = `
+            <p><strong>Número:</strong> ${r.reservation_number}</p>
+            <p><strong>Nombre:</strong> ${r.name}</p>
+            <p><strong>Fecha:</strong> ${r.date}</p>
+            <p><strong>Hora:</strong> ${r.time}</p>
+            <p><strong>Personas:</strong> ${r.party_size}</p>
+          `
+        } else {
+          resultEl.innerHTML = `<p style="color:#c0392b">${json.error}</p>`
+        }
+        resultEl.style.display = 'block'
+      } catch {
+        resultEl.innerHTML = '<p style="color:#c0392b">Error de conexión con el servidor.</p>'
+        resultEl.style.display = 'block'
+      }
+    })
+  </script>
+  <script src="theme.js"></script>
+
+</body>
+</html>
